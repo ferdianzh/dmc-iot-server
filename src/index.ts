@@ -2,6 +2,7 @@ import "dotenv/config";
 import express, { type Express, type Request, type Response } from "express";
 import { dbConnTest } from "./db/index.ts";
 import { sensorRouter } from "./modules/sensor-data/sensor-data.route.ts";
+import { deviceControlRouter } from "./modules/device-control/device-control.route.ts";
 
 const app: Express = express();
 const host: string = process.env.APP_HOST || "localhost";
@@ -11,6 +12,7 @@ await dbConnTest();
 
 app.use(express.json());
 app.use("/sensor-data", sensorRouter);
+app.use("/device-control", deviceControlRouter);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
