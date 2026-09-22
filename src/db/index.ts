@@ -8,12 +8,14 @@ export const db = drizzle({
   },
 });
 
-export async function dbConnTest() {
+export async function dbConnTest(exit = false) {
   try {
     await db.execute(sql`SELECT 1`);
-    console.log("Database connection established successfully.");
+    console.log("Database connection OK");
+    return true;
   } catch (error) {
     console.error("Failed to connect to the database:", error);
-    process.exit(1);
+    if (exit) process.exit(1);
+    return false;
   }
 }

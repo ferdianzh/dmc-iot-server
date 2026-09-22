@@ -10,9 +10,22 @@ export const mqttClient = mqtt.connect(MQTT_BROKER_URL, {
 });
 
 mqttClient.on("connect", () => {
-  console.log("connected to mosquitto mqtt broker");
+  console.log("MQTT connection OK");
 });
 
 mqttClient.on("error", (err) => {
-  console.error("mqtt client error:", err);
+  console.error("Failed to connect to the MQTT broker");
 });
+
+export function mqttConnTest(exit = false): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (mqttClient.connected) {
+      console.log("MQTT connection OK");
+      resolve(true);
+    } else {
+      console.error("Failed to connect to the MQTT broker");
+      if (exit) process.exit(1);
+      resolve(false);
+    }
+  });
+}
