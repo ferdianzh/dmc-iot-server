@@ -1,0 +1,455 @@
+{
+  "info": {
+    "_postman_id": "d47e7559-13b0-4ad7-863b-6b1569041d65",
+    "name": "dmc-iot-server",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26235933"
+  },
+  "item": [
+    {
+      "name": "sensor-data",
+      "item": [
+        {
+          "name": "add sensor data",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"sensorId\": \"TEST_01\",\r\n    \"temp\": 27.5,\r\n    \"tempUnit\": \"c\",\r\n    \"humidity\": 58.1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/sensor-data",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "sensor-data"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201 - created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"sensorId\": \"TEST_01\",\r\n    \"temp\": 27.5,\r\n    \"tempUnit\": \"c\",\r\n    \"humidity\": 58.1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/sensor-data",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "sensor-data"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "76"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"4c-N5Wa0voAegVSxzBtE6ivDvDqH28\""
+                },
+                {
+                  "key": "date",
+                  "value": "Tue, 22 Sep 2026 20:49:14 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": 1,\n  \"sensorId\": \"TEST_01\",\n  \"temp\": \"27.5\",\n  \"tempUnit\": \"c\",\n  \"humidity\": \"58.1\"\n}"
+            },
+            {
+              "name": "400 - validation err",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"temp\": 27.5,\r\n    \"tempUnit\": \"w\",\r\n    \"humidity\": \"58.1\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/sensor-data",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "sensor-data"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "283"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"11b-RkKtjCRRy6+O0OeBoVeWYKHsQV4\""
+                },
+                {
+                  "key": "date",
+                  "value": "Tue, 22 Sep 2026 20:58:06 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Validation error\",\n  \"errors\": [\n    {\n      \"field\": \"sensorId\",\n      \"message\": \"Invalid input: expected string, received undefined\"\n    },\n    {\n      \"field\": \"tempUnit\",\n      \"message\": \"Invalid option: expected one of \\\"c\\\"|\\\"f\\\"\"\n    },\n    {\n      \"field\": \"humidity\",\n      \"message\": \"Invalid input: expected number, received string\"\n    }\n  ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "get all sensor-data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"sensorId\": \"TEST_01\",\r\n    \"temp\": 27.5,\r\n    \"tempUnit\": \"c\",\r\n    \"humidity\": 58.1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/sensor-data",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "sensor-data"
+              ],
+              "query": [
+                {
+                  "key": "sensorId",
+                  "value": "TEST_01",
+                  "disabled": true
+                },
+                {
+                  "key": "orderBy",
+                  "value": "createdAt",
+                  "disabled": true
+                },
+                {
+                  "key": "order",
+                  "value": "desc",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - ok",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"sensorId\": \"TEST_01\",\r\n    \"temp\": 27.5,\r\n    \"tempUnit\": \"c\",\r\n    \"humidity\": 58.1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/sensor-data",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "sensor-data"
+                  ],
+                  "query": [
+                    {
+                      "key": "sensorId",
+                      "value": "TEST_01",
+                      "disabled": true
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "createdAt",
+                      "disabled": true
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "233"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"e9-DBkzSU2Y9COqEnKCyzeGOuUtzmI\""
+                },
+                {
+                  "key": "date",
+                  "value": "Tue, 22 Sep 2026 21:26:44 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"id\": 1,\n    \"sensorId\": \"TEST_01\",\n    \"temp\": \"27.5\",\n    \"tempUnit\": \"c\",\n    \"humidity\": \"58.1\",\n    \"createdAt\": \"2026-09-23T03:53:35.907Z\"\n  },\n  {\n    \"id\": 2,\n    \"sensorId\": \"TEST_01\",\n    \"temp\": \"27.5\",\n    \"tempUnit\": \"c\",\n    \"humidity\": \"58.1\",\n    \"createdAt\": \"2026-09-23T03:59:18.439Z\"\n  }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "device-control",
+      "item": [
+        {
+          "name": "device control",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"deviceId\": \"TEST_01\",\r\n    \"command\": \"ON\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/device-control",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "device-control"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - ok",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"deviceId\": \"TEST_01\",\r\n    \"command\": \"ON\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{host}}/device-control",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "device-control"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "20"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"14-Y53wuE/mmbSikKcT/WualL1N65U\""
+                },
+                {
+                  "key": "date",
+                  "value": "Tue, 22 Sep 2026 21:57:10 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"status\": \"success\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "status",
+      "item": [
+        {
+          "name": "status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/status",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 - ok",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{host}}/status",
+                  "host": [
+                    "{{host}}"
+                  ],
+                  "path": [
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "x-powered-by",
+                  "value": "Express"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "content-length",
+                  "value": "23"
+                },
+                {
+                  "key": "etag",
+                  "value": "W/\"17-qTP+ZsYhiv5JZD2RQL+7c6dfGbc\""
+                },
+                {
+                  "key": "date",
+                  "value": "Tue, 22 Sep 2026 22:26:41 GMT"
+                },
+                {
+                  "key": "connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "keep-alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"db\": true,\n  \"mqtt\": true\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "host",
+      "value": ""
+    }
+  ]
+}
