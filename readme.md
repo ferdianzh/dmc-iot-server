@@ -2,6 +2,7 @@
 
 - Project created using Typescript, Express, & PostgreSQL
 - Follow the steps below to run the application
+- Required node version 20+ (tested with v24.14.1)
 
 ## Setup DB
 
@@ -10,7 +11,7 @@
 
 ## Setup MQTT/Mosquitto
 
-1. Make sure you already have a Mosquitto running
+1. Make sure you already have a Mosquitto running (for windows make sure the path is added in enviroment variables)
 2. Run this command in terminal to check if Mosquitto is running
 
 ```bash
